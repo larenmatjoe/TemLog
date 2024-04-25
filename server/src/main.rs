@@ -1,3 +1,5 @@
+use std::net::{TcpListener, TcpStream};
+//use std::thread;
 fn main() {
-    println!("Hello, world!");
+    let _listener = TcpListener::bind("127.0.0.1:9000").unwrap();
 }
