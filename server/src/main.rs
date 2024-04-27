@@ -11,12 +11,13 @@ fn handling(stream :Result<TcpStream, std::io::Error>) {
                 let mut buffer = [0;65535];
                 let _ = stream.read(&mut buffer);
                 if buffer[0] == b'\0' {
+                    println!("{} Disconnected",ip);
                     break;
                 }
                 if buffer[0] == b'\n' {
                     continue;
                 }
-                let data = &String::from_utf8_lossy(&buffer)[0..3];
+                let data = &String::from_utf8_lossy(&buffer)[0..4];
                 //println!("Received : {} bytes",data.chars());
                 println!("Payload : {}",data);
             }
