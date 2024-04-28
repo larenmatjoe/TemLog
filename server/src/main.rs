@@ -1,6 +1,11 @@
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::io::prelude::*;
+use sqlite;
+fn database(data :String) {
+    let _connection = sqlite::open("storage.db").unwrap();
+    let _query = "insert into";
+}
 fn handling(stream :Result<TcpStream, std::io::Error>) {
     match stream {
         Ok(mut stream) => {
