@@ -14,7 +14,7 @@ fn handling(stream :Result<TcpStream, std::io::Error>) {
             let _ = stream.write(b"Connected to Server!");
             loop {
                 let mut buffer = [0;65535];
-                let _ = stream.read(&mut buffer);
+                let n = stream.read(&mut buffer);
                 if buffer[0] == b'\0' {
                     println!("{} Disconnected",ip);
                     break;
@@ -22,7 +22,7 @@ fn handling(stream :Result<TcpStream, std::io::Error>) {
                 if buffer[0] == b'\n' {
                     continue;
                 }
-                let data = &String::from_utf8_lossy(&buffer)[0..4];
+                let data = &String::from_utf8_lossy(&buffer)[0..n.expect("REASON")];
                 //println!("Received : {} bytes",data.chars());
                 println!("Payload : {}",data);
             }
