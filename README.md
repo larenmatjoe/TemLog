@@ -1,2 +1,2 @@
 # TemLog
-Logs temperature 
+Logs
