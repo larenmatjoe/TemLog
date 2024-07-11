@@ -1,4 +1,5 @@
 # TemLog
+
 Simple server to monitor client devices
 
 ## Installation
